@@ -17,7 +17,7 @@ export default function Header() {
             <Logo
               size="lg"
               textClassName="hidden sm:block"
-              className="[&>div:first-child]:hover:bg-red-700 [&>div:first-child]:transition-colors"
+              className="transition-transform hover:scale-[1.02]"
             />
           </Link>
 
