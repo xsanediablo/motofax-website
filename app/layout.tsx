@@ -1,10 +1,8 @@
-import type { Metadata } from 'next'
-import './globals.css'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'MotoFax - Vehicle History Reports',
-  description: 'Get comprehensive vehicle history reports instantly',
-}
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import './globals.css'
 
 export default function RootLayout({
   children,
@@ -13,7 +11,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-black text-white">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
