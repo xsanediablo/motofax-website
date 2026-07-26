@@ -28,7 +28,7 @@ export default function PricingPage() {
       <div className="grid gap-8 md:grid-cols-2">
         <article className="rounded-lg border border-gray-800 bg-zinc-950 p-8">
           <h2 className="text-2xl font-bold text-white mb-4">Consumer</h2>
-          <div className="text-4xl font-bold text-red-500 mb-6">${isAnnual ? '29.99' : '24.99'}/month</div>
+          <div className="text-4xl font-bold text-red-500 mb-6">$24.99{isAnnual ? '' : ''}/report</div>
           <ul className="text-gray-400 space-y-2">
             <li>✓ Single vehicle reports</li>
             <li>✓ Email delivery</li>
