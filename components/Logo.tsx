@@ -5,10 +5,10 @@ type LogoProps = {
   textClassName?: string
 }
 
-const pixelSizes = {
-  sm: 48,
-  md: 56,
-  lg: 72,
+const markSizes = {
+  sm: 'w-12 h-12 text-2xl',
+  md: 'w-14 h-14 text-3xl',
+  lg: 'w-20 h-20 text-5xl',
 }
 
 const textClasses = {
@@ -27,28 +27,15 @@ const textClasses = {
 }
 
 export default function Logo({ showText = true, size = 'lg', className = '', textClassName = '' }: LogoProps) {
-  const px = pixelSizes[size]
   return (
     <div className={`flex items-center gap-3 ${className}`}>
-      {/* Inline SVG — no external file dependency */}
-      <svg
-        width={px}
-        height={px}
-        viewBox="0 0 80 80"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+      <div
+        className={`${markSizes[size]} rounded-xl bg-red-600 text-white font-black flex items-center justify-center shadow-[0_0_20px_rgba(220,20,60,0.3)]`}
         aria-label="MotoFax logo mark"
         role="img"
-        style={{ flexShrink: 0 }}
       >
-        {/* Red rounded square background */}
-        <rect width="80" height="80" rx="16" fill="#DC143C" />
-        {/* White M letterform */}
-        <path
-          d="M12 64V16H24L40 38L56 16H68V64H56V36L40 58L24 36V64H12Z"
-          fill="white"
-        />
-      </svg>
+        M
+      </div>
       {showText && (
         <div className={textClassName}>
           <div className={`text-white font-black tracking-tight leading-none ${textClasses[size].title}`}>MOTOFAX</div>
