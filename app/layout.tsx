@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import './globals.css'
 
 export default function RootLayout({
@@ -16,13 +15,10 @@ export default function RootLayout({
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center gap-3">
-                <Image 
+                <img 
                   src="/motofax-logo.png" 
                   alt="MotoFax Logo"
-                  width={120}
-                  height={120}
-                  className="w-32 h-32"
-                  priority
+                  className="w-32 h-32 object-contain"
                 />
                 <span className="text-4xl font-bold leading-tight">
                   <div><span className="text-white">Moto</span><span className="text-red-500">Fax</span></div>
