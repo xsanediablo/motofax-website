@@ -1,1 +1,41 @@
-'use client'\n\nimport Link from 'next/link'\nimport { useState } from 'react'\nimport Button from './Button'\nimport { Menu, X } from 'lucide-react'\n\nexport default function Header() {\n  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)\n\n  return (\n    <header className=\"bg-black border-b border-gray-800 sticky top-0 z-50\">\n      <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4\">\n        <div className=\"flex justify-between items-center\">\n          {/* Logo - ENLARGED */}\n          <Link href=\"/\" className=\"flex items-center gap-3 flex-shrink-0\">\n            <div className=\"w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center font-black text-white text-3xl hover:bg-red-600 transition-colors\">\n              M\n            </div>\n            <div className=\"hidden sm:block\">\n              <div className=\"text-white font-black text-2xl\">MOTOFAX</div>\n              <div className=\"text-xs text-red-500 font-bold\">Vehicle History</div>\n            </div>\n          </Link>\n\n          {/* Desktop Navigation */}\n          <nav className=\"hidden md:flex items-center gap-8\">\n            <Link href=\"/how-it-works\" className=\"text-gray-400 hover:text-white transition-colors\">How It Works</Link>\n            <Link href=\"/for-dealers\" className=\"text-gray-400 hover:text-white transition-colors\">For Dealers</Link>\n            <Link href=\"/integrations\" className=\"text-gray-400 hover:text-white transition-colors\">Integrations</Link>\n            <Link href=\"/pricing\" className=\"text-gray-400 hover:text-white transition-colors\">Pricing</Link>\n            <Link href=\"/amsoil\" className=\"text-gray-400 hover:text-white transition-colors\">AMSOIL</Link>\n            <Link href=\"/about\" className=\"text-gray-400 hover:text-white transition-colors\">About</Link>\n          </nav>\n\n          {/* CTA Buttons */}\n          <div className=\"hidden md:flex items-center gap-4\">\n            <Link href=\"/login\">\n              <button className=\"text-gray-400 hover:text-white transition-colors font-semibold\">\n                Dealer Login\n              </button>\n            </Link>\n            <Button variant=\"primary\">Get Started</Button>\n          </div>\n\n          {/* Mobile Menu Button */}\n          <button\n            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}\n            className=\"md:hidden text-gray-400 hover:text-white transition-colors\"\n          >\n            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}\n          </button>\n        </div>\n\n        {/* Mobile Navigation */}\n        {isMobileMenuOpen && (\n          <nav className=\"md:hidden mt-4 pb-4 space-y-4 border-t border-gray-800 pt-4\">\n            <Link href=\"/how-it-works\" className=\"block text-gray-400 hover:text-white transition-colors\">How It Works</Link>\n            <Link href=\"/for-dealers\" className=\"block text-gray-400 hover:text-white transition-colors\">For Dealers</Link>\n            <Link href=\"/integrations\" className=\"block text-gray-400 hover:text-white transition-colors\">Integrations</Link>\n            <Link href=\"/pricing\" className=\"block text-gray-400 hover:text-white transition-colors\">Pricing</Link>\n            <Link href=\"/amsoil\" className=\"block text-gray-400 hover:text-white transition-colors font-bold text-red-500\">AMSOIL</Link>\n            <Link href=\"/about\" className=\"block text-gray-400 hover:text-white transition-colors\">About</Link>\n            <Link href=\"/login\" className=\"block text-gray-400 hover:text-white transition-colors\">Dealer Login</Link>\n            <Button variant=\"primary\" className=\"w-full\">Get Started</Button>\n          </nav>\n        )}\n      </div>\n    </header>\n  )\n}\n
+'use client'
+
+import Link from 'next/link'
+
+export default function Header() {
+  return (
+    <header className="border-b border-gray-800 bg-black py-4">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="text-2xl font-bold">
+            <span className="text-white">Moto</span>
+            <span className="text-red-500">Fax</span>
+          </Link>
+          <nav className="flex items-center gap-8">
+            <Link href="/how-it-works" className="text-gray-300 hover:text-white transition">
+              How It Works
+            </Link>
+            <Link href="/for-dealers" className="text-gray-300 hover:text-white transition">
+              For Dealers
+            </Link>
+            <Link href="/integrations" className="text-gray-300 hover:text-white transition">
+              Integrations
+            </Link>
+            <Link href="/pricing" className="text-gray-300 hover:text-white transition">
+              Pricing
+            </Link>
+            <Link href="/amsoil" className="text-red-500 font-bold hover:text-red-400 transition">
+              AMSOIL
+            </Link>
+            <Link href="/about" className="text-gray-300 hover:text-white transition">
+              About
+            </Link>
+            <Link href="/login" className="text-gray-300 hover:text-white transition">
+              Dealer Login
+            </Link>
+          </nav>
+        </div>
+      </div>
+    </header>
+  )
+}
