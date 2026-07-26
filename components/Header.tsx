@@ -1,1 +1,78 @@
-'use client'\n\nimport Link from 'next/link'\nimport { useState } from 'react'\nimport Button from './Button'\nimport { Menu, X } from 'lucide-react'\n\nexport default function Header() {\n  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)\n\n  return (\n    <header className=\"bg-black border-b border-gray-800 sticky top-0 z-50\">\n      <div className=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4\">\n        <div className=\"flex justify-between items-center\">\n          {/* Logo - ENLARGED */}\n          <Link href=\"/\" className=\"flex items-center gap-3 flex-shrink-0\">\n            <div className=\"w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center font-black text-white text-3xl hover:bg-red-600 transition-colors\">\n              M\n            </div>\n            <div className=\"hidden sm:block\">\n              <div className=\"text-white font-black text-2xl\">MOTOFAX</div>\n              <div className=\"text-xs text-red-500 font-bold\">Vehicle History</div>\n            </div>\n          </Link>\n\n          {/* Desktop Navigation */}\n          <nav className=\"hidden md:flex items-center gap-8\">\n            <Link href=\"/how-it-works\" className=\"text-gray-400 hover:text-white transition-colors\">How It Works</Link>\n            <Link href=\"/for-dealers\" className=\"text-gray-400 hover:text-white transition-colors\">For Dealers</Link>\n            <Link href=\"/integrations\" className=\"text-gray-400 hover:text-white transition-colors\">Integrations</Link>\n            <Link href=\"/pricing\" className=\"text-gray-400 hover:text-white transition-colors\">Pricing</Link>\n            <Link href=\"/amsoil\" className=\"text-gray-400 hover:text-white transition-colors\">AMSOIL</Link>\n            <Link href=\"/about\" className=\"text-gray-400 hover:text-white transition-colors\">About</Link>\n          </nav>\n\n          {/* CTA Buttons */}\n          <div className=\"hidden md:flex items-center gap-4\">\n            <Link href=\"/login\">\n              <button className=\"text-gray-400 hover:text-white transition-colors font-semibold\">\n                Dealer Login\n              </button>\n            </Link>\n            <Button variant=\"primary\">Get Started</Button>\n          </div>\n\n          {/* Mobile Menu Button */}\n          <button\n            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}\n            className=\"md:hidden text-gray-400 hover:text-white transition-colors\"\n          >\n            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}\n          </button>\n        </div>\n\n        {/* Mobile Navigation */}\n        {isMobileMenuOpen && (\n          <nav className=\"md:hidden mt-4 pb-4 space-y-4 border-t border-gray-800 pt-4\">\n            <Link href=\"/how-it-works\" className=\"block text-gray-400 hover:text-white transition-colors\">How It Works</Link>\n            <Link href=\"/for-dealers\" className=\"block text-gray-400 hover:text-white transition-colors\">For Dealers</Link>\n            <Link href=\"/integrations\" className=\"block text-gray-400 hover:text-white transition-colors\">Integrations</Link>\n            <Link href=\"/pricing\" className=\"block text-gray-400 hover:text-white transition-colors\">Pricing</Link>\n            <Link href=\"/amsoil\" className=\"block text-gray-400 hover:text-white transition-colors font-bold text-red-500\">AMSOIL</Link>\n            <Link href=\"/about\" className=\"block text-gray-400 hover:text-white transition-colors\">About</Link>\n            <Link href=\"/login\" className=\"block text-gray-400 hover:text-white transition-colors\">Dealer Login</Link>\n            <Button variant=\"primary\" className=\"w-full\">Get Started</Button>\n          </nav>\n        )}\n      </div>\n    </header>\n  )\n}\n
+'use client'
+
+import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
+import { useState } from 'react'
+import Button from './Button'
+
+const navLinks = [
+  { href: '/how-it-works', label: 'How It Works' },
+  { href: '/for-dealers', label: 'For Dealers' },
+  { href: '/integrations', label: 'Integrations' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/amsoil', label: 'AMSOIL', className: 'text-red-500 hover:text-red-400' },
+  { href: '/about', label: 'About' },
+]
+
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-gray-800 bg-black/95 backdrop-blur">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-red-600 text-3xl font-black text-white">M</div>
+          <div>
+            <p className="text-2xl font-black text-white">MOTOFAX</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-red-500">Vehicle History</p>
+          </div>
+        </Link>
+
+        <nav className="hidden items-center gap-6 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={link.className ?? 'text-gray-300 transition-colors hover:text-white'}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-3 md:flex">
+          <Link href="/login" className="text-sm font-semibold text-gray-300 transition-colors hover:text-white">
+            Dealer Login
+          </Link>
+          <Button size="sm">Get Started</Button>
+        </div>
+
+        <button
+          className="text-gray-300 md:hidden"
+          onClick={() => setMobileMenuOpen((current) => !current)}
+          aria-label="Toggle mobile menu"
+        >
+          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {mobileMenuOpen && (
+        <nav className="space-y-3 border-t border-gray-800 px-4 py-4 md:hidden">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`block ${link.className ?? 'text-gray-300'} transition-colors hover:text-white`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/login" className="block text-gray-300 hover:text-white" onClick={() => setMobileMenuOpen(false)}>
+            Dealer Login
+          </Link>
+        </nav>
+      )}
+    </header>
+  )
+}
