@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import './globals.css'
-import Image from 'next/image'
 
 export default function RootLayout({
   children,
@@ -15,15 +14,31 @@ export default function RootLayout({
         <header className="border-b border-gray-800 bg-black py-4">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-3">
-                <img 
-                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%23000' width='200' height='200'/%3E%3Cg transform='translate(50,50)'%3E%3Ccircle cx='50' cy='50' r='45' fill='none' stroke='%23999' stroke-width='3'/%3E%3Cpath d='M30,60 Q50,30 70,60' fill='none' stroke='%23999' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='35' cy='75' r='5' fill='%23999'/%3E%3Ccircle cx='65' cy='75' r='5' fill='%23999'/%3E%3Cpath d='M45,85 L55,85' stroke='%23FF4444' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M60,50 L80,30' stroke='%23FF4444' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M60,50 L80,70' stroke='%23FF4444' stroke-width='4' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E"
-                  alt="MotoFax"
-                  width={40}
-                  height={40}
-                  className="w-10 h-10"
-                />
-                <span className="text-2xl font-bold">
+              <Link href="/" className="flex items-center gap-4">
+                <svg 
+                  width="80" 
+                  height="80" 
+                  viewBox="0 0 200 200" 
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-20 h-20"
+                >
+                  <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#999', stopOpacity: 1}} />
+                      <stop offset="100%" style={{stopColor: '#666', stopOpacity: 1}} />
+                    </linearGradient>
+                  </defs>
+                  <rect fill="#000" width="200" height="200"/>
+                  {/* Shield */}
+                  <path d="M60 30 L140 30 L140 90 Q100 140 100 140 Q100 140 60 90 Z" fill="none" stroke="url(#grad1)" strokeWidth="4"/>
+                  {/* Checkmark */}
+                  <path d="M80 100 L95 115 L130 75" fill="none" stroke="#FF3333" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                  {/* Motorcycle */}
+                  <circle cx="70" cy="110" r="8" fill="#999"/>
+                  <circle cx="130" cy="110" r="8" fill="#999"/>
+                  <path d="M75 105 Q100 70 125 105" fill="none" stroke="#999" strokeWidth="4" strokeLinecap="round"/>
+                </svg>
+                <span className="text-3xl font-bold">
                   <span className="text-white">Moto</span>
                   <span className="text-red-500">Fax</span>
                 </span>
