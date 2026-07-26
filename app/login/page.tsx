@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Button from '@/components/Button'
+import Logo from '@/components/Logo'
 import { Lock, Mail, ArrowRight } from 'lucide-react'
 
 export default function Login() {
@@ -19,9 +20,7 @@ export default function Login() {
       <div className="w-full max-w-md">
         {/* Logo area */}
         <div className="text-center mb-10">
-          <div className="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center font-black text-white text-3xl mx-auto mb-4">
-            M
-          </div>
+          <Logo size="lg" showText={false} className="justify-center mb-4" />
           <h1 className="text-3xl font-black text-white mb-2">Dealer Login</h1>
           <p className="text-gray-400">Sign in to your MotoFax dealer account</p>
         </div>

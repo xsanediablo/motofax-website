@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import Button from './Button'
+import Logo from './Logo'
 import { Menu, X } from 'lucide-react'
 
 export default function Header() {
@@ -12,15 +13,12 @@ export default function Header() {
     <header className="bg-black border-b border-gray-800 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
-          {/* Logo - ENLARGED */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-            <div className="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center font-black text-white text-3xl hover:bg-red-700 transition-colors shadow-[0_0_20px_rgba(220,20,60,0.3)]">
-              M
-            </div>
-            <div className="hidden sm:block">
-              <div className="text-white font-black text-3xl tracking-tight">MOTOFAX</div>
-              <div className="text-xs text-red-500 font-bold tracking-widest uppercase">Vehicle History</div>
-            </div>
+            <Logo
+              size="lg"
+              textClassName="hidden sm:block"
+              className="[&>div:first-child]:hover:bg-red-700 [&>div:first-child]:transition-colors"
+            />
           </Link>
 
           {/* Desktop Navigation */}
