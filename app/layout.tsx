@@ -14,33 +14,49 @@ export default function RootLayout({
         <header className="border-b border-gray-800 bg-black py-4">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-4">
+              <Link href="/" className="flex items-center gap-3">
                 <svg 
-                  width="80" 
-                  height="80" 
-                  viewBox="0 0 200 200" 
+                  width="100" 
+                  height="100" 
+                  viewBox="0 0 500 500" 
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-20 h-20"
+                  className="w-24 h-24"
                 >
-                  <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: '#999', stopOpacity: 1}} />
-                      <stop offset="100%" style={{stopColor: '#666', stopOpacity: 1}} />
-                    </linearGradient>
-                  </defs>
-                  <rect fill="#000" width="200" height="200"/>
-                  {/* Shield */}
-                  <path d="M60 30 L140 30 L140 90 Q100 140 100 140 Q100 140 60 90 Z" fill="none" stroke="url(#grad1)" strokeWidth="4"/>
-                  {/* Checkmark */}
-                  <path d="M80 100 L95 115 L130 75" fill="none" stroke="#FF3333" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
-                  {/* Motorcycle */}
-                  <circle cx="70" cy="110" r="8" fill="#999"/>
-                  <circle cx="130" cy="110" r="8" fill="#999"/>
-                  <path d="M75 105 Q100 70 125 105" fill="none" stroke="#999" strokeWidth="4" strokeLinecap="round"/>
+                  {/* Shield outline */}
+                  <path d="M 150 80 L 350 80 L 350 240 Q 250 340 250 340 Q 250 340 150 240 Z" 
+                    fill="none" stroke="#888888" strokeWidth="20" strokeLinejoin="round"/>
+                  
+                  {/* Red checkmark */}
+                  <path d="M 200 260 L 230 290 L 310 180" 
+                    fill="none" stroke="#FF3333" strokeWidth="30" strokeLinecap="round" strokeLinejoin="round"/>
+                  
+                  {/* Motorcycle body */}
+                  <g transform="translate(250, 180)">
+                    {/* Wheels */}
+                    <circle cx="-60" cy="80" r="25" fill="none" stroke="#333333" strokeWidth="8"/>
+                    <circle cx="60" cy="80" r="25" fill="none" stroke="#333333" strokeWidth="8"/>
+                    
+                    {/* Bike frame */}
+                    <path d="M -50 50 Q 0 20 50 50" 
+                      fill="none" stroke="#888888" strokeWidth="12" strokeLinecap="round"/>
+                    
+                    {/* Handlebars */}
+                    <path d="M -50 40 L -50 10" 
+                      fill="none" stroke="#888888" strokeWidth="8" strokeLinecap="round"/>
+                    <path d="M -70 10 L -30 10" 
+                      fill="none" stroke="#888888" strokeWidth="8" strokeLinecap="round"/>
+                    
+                    {/* Seat */}
+                    <path d="M 0 30 Q 20 25 40 35" 
+                      fill="none" stroke="#888888" strokeWidth="10" strokeLinecap="round"/>
+                  </g>
+                  
+                  {/* Red accent lines */}
+                  <line x1="280" y1="100" x2="340" y2="60" stroke="#FF3333" strokeWidth="16" strokeLinecap="round"/>
+                  <line x1="280" y1="140" x2="340" y2="180" stroke="#FF3333" strokeWidth="16" strokeLinecap="round"/>
                 </svg>
-                <span className="text-3xl font-bold">
-                  <span className="text-white">Moto</span>
-                  <span className="text-red-500">Fax</span>
+                <span className="text-4xl font-bold leading-tight">
+                  <div><span className="text-white">Moto</span><span className="text-red-500">Fax</span></div>
                 </span>
               </Link>
               <nav className="flex items-center gap-8">
